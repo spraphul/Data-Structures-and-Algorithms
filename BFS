@@ -37,6 +37,8 @@ graph::BFS(int s)
 	list<int>::iterator i;
 	while(q.empty()!=true)
 	{
+	        int s = q.pop();
+		cout<<s<<" ";
 		for(i=adj[s].begin();i!=adj[s].end();i++)
 		{
 			if(visited[*i]!=true)
