@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class graph
+{
+	int v;
+	list<int >* adj;
+	void DFSUtil(int v, bool visited[int v]);
+public:
+      graph(int v);
+      void addedge(int u, int v);
+      void DFS(int v);
+      
+};
+
+graph::graph(int v)
+{
+	this-> v =v;
+	adj= list<int>[v];
+}
+
+graph::addedge(int u, int v)
+{
+	adj[u].push_back(v);
+	adj[v].push_back(u);
+}
+
+graph::DFSUtil(int s, bool visited[v],stack<int > s)
+{
+	visited[s]=true;
+	list<int >::iterator i;
+	for(i=adj[s].begin();i!=adj[s].end();i++)
+	{
+		if(visited[*i]!=true)
+		{
+			DFSUtil(*i,visited,s);
+		}
+	}
+	s.push(s);
+	
+}
+
+graph::DFS(int s)
+{
+	bool visited[v];
+	for(int i=0;i<v;i++)
+	{
+		visited[i]=false;
+	}
+	stack<int > s;
+	DFSUtil(s,visited,s);
+	while(s.empty()!=true)
+	{
+		int l = s.pop();
+		cout<< s<<" ";
+		
+	}
+}
