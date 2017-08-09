@@ -58,7 +58,7 @@ graph::topological(int v)
 	while(s.empty()!=true)
 	{
 		int l= s.pop();
-		cout<<s<<" ";
+		cout<<l<<" ";
 	}
 	
 }
