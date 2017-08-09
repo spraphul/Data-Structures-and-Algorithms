@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class graph
+{
+	int V;
+	list<int>* adj;
+	void topoUtil(int v,bool visited[v],stack<int> s);
+public:
+     graph(int v);
+     void addedge(int u, int v);
+     void topological(int v);
+}
+
+graph::graph(int v)
+{
+	this->v =v;
+	adj = new list<int>[v];
+}
+
+graph::addedge(int u, int v)
+{
+	adj[u].push_back(v);
+	adj[v].push_back(u);
+}
+
+graph::topoUtil(int v, bool visited[v], stack<int> s)
+{
+	if(visited[v]!=true) visited[v]=true;
+	
+	
+	list<int>::iterator i;
+	for(i=adj[v].begin();i!=adj[v].end();i++)
+	{
+		if(visited[*i]!=true)
+		{
+			topoUtil(*i,visited,s);
+		}
+	}
+	
+	s.push(v);
+}
+
+graph::topological(int v)
+{
+	stack<int> s;
+	bool visited[v];
+	for(int i=0;i<v;i++)
+	{
+		visited[i]=false;
+	}
+	
+	for(int i=0;i<v;i++)
+	{
+		topoUtil(i,visited,s);
+	}
+	
+	while(s.empty()!=true)
+	{
+		int l= s.pop();
+		cout<<s<<" ";
+	}
+	
+}
