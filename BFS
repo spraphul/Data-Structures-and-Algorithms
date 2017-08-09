@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class graph
+{
+	int v;
+	list<int >* adj;
+public:
+      graph(int v);
+      void addEdge(int u, int v);
+      void BFS(int v);
+	
+};
+
+graph::graph(int v)
+{
+	this->v =v;
+	adj = new list<int >[v];
+}
+
+graph::addEdge(int u, int v)
+{
+	adj[u].push_back(v);
+	adj[v].push_back(u);
+}
+
+graph::BFS(int s)
+{
+	bool visited[v];
+	for(int i=0;i<v;i++)
+	{
+		visited[v]=false;
+	}
+	queue<int > q;
+	visited[s]=true;
+	q.push(s);
+	list<int>::iterator i;
+	while(q.empty()!=true)
+	{
+		for(i=adj[s].begin();i!=adj[s].end();i++)
+		{
+			if(visited[*i]!=true)
+			{
+				visited[*i]==true;
+				q.push(*i);
+			}
+		}
+	}
+}
+
+
+	
+
