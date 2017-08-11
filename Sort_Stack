@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void insert(stack<int > &S,int temp)
+{
+	if(S.empty()==true)
+	{
+		S.push(temp);
+		return;
+	}
+	if(S.top()<temp)
+	{
+		S.push(temp);
+	}
+	else
+	{
+		int a=S.top();
+		S.pop();
+		insert(S,temp);
+		S.push(a);
+	}
+}
+
+void sort_stack(stack<int> &S)
+{
+	if(S.empty()==true)
+	{
+		return;
+	}
+	int temp=S.top();
+	S.pop();
+	sort_stack(S);
+	insert(S,temp);
+	return;
+}
+
+
+
+int main() {
+	stack<int > S;
+	S.push(3);
+	S.push(1);
+	S.push(5);
+	S.push(4);
+	S.push(0);
+	sort_stack(S);
+	while(S.empty()!=true)
+	{
+		int a= S.top();
+		S.pop();
+		cout<<a<<" ";
+	}
+	return 0;
+}
