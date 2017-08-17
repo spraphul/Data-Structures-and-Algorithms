@@ -18,7 +18,8 @@ int LargestRectangleUtil(pair p[],stack<pair> S)
 	{
 		while(p[i].f<S.top().f)
 		{
-             pair p=S.pop();
+             pair p=S.top();
+	     S.pop();
              pair q= S.top();
              int y= (i-q.s-1)*p.f;
              if(y>x)
